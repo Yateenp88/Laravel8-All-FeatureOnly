@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\Userlogin;
+use App\Mail\Testmail;
+use Illuminate\Support\Facades\Mail;
 use phpDocumentor\Reflection\Types\Null_;
 
 class myLogin extends Controller
@@ -37,5 +39,13 @@ class myLogin extends Controller
         $pdata->address=$request->addr;
         $pdata->save();
         return redirect('registration');
+    }
+    function sendEmail(){
+        $details = [
+            'title'=>'Mail from laravel',
+            'body'=>'This is test mail send from laravel 8',
+        ];
+        Mail::to("ypdowork@gmail.com")->send(new Testmail($details));
+        return "Email Send";
     }
 }

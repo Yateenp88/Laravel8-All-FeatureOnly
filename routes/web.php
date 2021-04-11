@@ -106,3 +106,5 @@ Route::view('registration','registration');
 Route::post('userRegister',[myLogin::class,'userRegister']);
 
 Route::view('homepage','homepage');
+
+Route::get('mail',[myLogin::class,'sendEmail']);
